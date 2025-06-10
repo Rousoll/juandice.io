@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jaundice Eye Checker</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; }
+    h1 { text-align: center; }
+    #result { margin-top: 1rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Check Eye for Jaundice or Infection</h1>
+  <input type="file" id="imageUpload" accept="image/*" />
+  <button id="uploadBtn">Upload & Analyze</button>
+
+  <div id="result"></div>
+
+  <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const imageUpload = document.getElementById('imageUpload');
+    const resultDiv = document.getElementById('result');
+
+    uploadBtn.addEventListener('click', () => {
+      if (!imageUpload.files.length) {
+        alert('Please select an image first.');
+        return;
+      }
+
+      const file = imageUpload.files[0];
+      const formData = new FormData();
+      formData.append('image', file);
+
+      resultDiv.textContent = 'Analyzing...';
+
+      // Change this URL to your backend API URL after deployment
+      const apiUrl = 'https://rousoll.github.io/juandice.io/app.py';
+
+      fetch(apiUrl, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          resultDiv.textContent = `Error: ${data.error}`;
+        } else {
+          resultDiv.textContent = `Prediction: ${data.prediction} (Confidence: ${data.confidence})`;
+        }
+      })
+      .catch(err => {
+        resultDiv.textContent = 'Failed to connect to the backend server.';
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>
