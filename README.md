@@ -1,15 +1,16 @@
+
 ```markdown
 # Jaundice Eye Detection - Dataset Preparation & Preprocessing
 
 This project is focused on preparing a medical image dataset for detecting jaundice from eye images. It includes splitting datasets into training and validation sets, extracting eyes from facial images using Haar cascades, and formatting the data for machine learning models.
 
----
-
+'''
+'''
 ## 📁 Directory Structure
 
 Before running the script, structure your dataset like this:
 
-```
+
 
 dataset/
 ├── Jaundice/
@@ -20,12 +21,10 @@ dataset/
 │   ├── img1.jpg
 │   ├── img2.jpg
 │   └── ...
-
+```
 ```
 
 After processing, you'll get:
-
-```
 
 train/
 ├── Jaundice/
@@ -34,19 +33,17 @@ train/
 val/
 ├── Jaundice/
 ├── Normal/
-
+```
 ````
-
----
 
 ## 📦 Requirements
 
 Make sure you have the following Python packages installed:
 
 ```bash
-pip install opencv-python 
-pip install numpy 
-pip install pillow 
+pip install opencv-python
+pip install numpy
+pip install pillow
 pip install tensorflow
 ````
 
@@ -55,8 +52,8 @@ pip install tensorflow
 ## 🚀 How to Run
 
 1. Place your dataset inside folders named `Jaundice` and `Normal`.
-2. Run the class of data_processing.py
-OR
+2. Run the class in `data_processing.py`
+   **OR**
 3. Run the preprocessing script:
 
 ```bash
@@ -102,4 +99,5 @@ After preprocessing, the images are ready for training a CNN or any other classi
 
 ## 👨‍💻 Author
 
-Developed by \ Rousol Sabobeh
+Developed by **Rousol Sabobeh**
+
